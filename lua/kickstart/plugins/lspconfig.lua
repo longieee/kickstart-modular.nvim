@@ -271,6 +271,19 @@ return {
           end,
         },
       }
+      -- CLANGD SETUP
+      require('lspconfig').clangd.setup {
+        cmd = {
+          'clangd',
+          '--background-index',
+          '--header-insertion=never',
+          '--query-driver=/usr/bin/clang++',
+          '--compile-commands-dir=.',
+          '--clang-tidy',
+          '-I/opt/homebrew/include',
+        },
+        filetypes = { 'c', 'cpp' },
+      }
     end,
   },
 }
